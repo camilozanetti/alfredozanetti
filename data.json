@@ -1,20 +1,26 @@
 {
   "site": {
     "brand": "Zanetti",
-    "brandSuffix": "Photography",
     "tagline": "Fashion & portrait photography with a sociological eye.",
     "location": "Perth, Western Australia",
     "email": "hello@alfredozanetti.com",
     "whatsappNumber": "61400000000",
     "whatsappMessage": "Hi Alfredo, I'd like to enquire about a shoot.",
     "instagramUrl": "https://instagram.com/",
-    "ctaLabel": "Book a Shoot"
+    "ctaLabel": "Book Shoot"
   },
   "tracking": {
     "ga4Id": "",
     "metaPixelId": "",
     "gtmId": ""
   },
+  "nav": [
+    { "id": "portfolio", "label": "Portfolio" },
+    { "id": "about", "label": "The Sociological Eye" },
+    { "id": "services", "label": "Services" },
+    { "id": "legal", "label": "Legal & Permits" },
+    { "id": "contact", "label": "Contact" }
+  ],
   "hero": {
     "eyebrow": "Fashion & Portrait Photography — Perth, WA",
     "titleLine1": "A clean,",
@@ -53,39 +59,25 @@
       "icon": "ph-user-focus"
     }
   ],
-  "portfolio": [
-    {
+  "portfolio": {
+    "intro": {
+      "eyebrow": "Brutalist Form, Author's Space",
+      "title": "A clean, <span class=\"italic text-aged-gold font-normal\">cinematic</span> and natural aesthetic.",
+      "paragraph": "Alfredo Zanetti is a Perth-based photographer. His work is defined by a clean, cinematic aesthetic that captures the authenticity and emotion of every person in front of his camera.",
       "image": "https://images.squarespace-cdn.com/content/v1/692422ebd1cc1f7694f596a6/c16628dd-e8f3-48ad-a6b2-e45d76b3be3e/jareth1.JPG",
-      "alt": "On-location portrait, natural light",
-      "label": "Portfolio Work — Jareth I"
+      "imageLabel": "Portfolio Work // Jareth I"
     },
-    {
-      "image": "https://images.squarespace-cdn.com/content/v1/692422ebd1cc1f7694f596a6/2f7b7d85-8156-4309-b3c5-7d329f129aa7/seba-744169.JPG",
-      "alt": "Studio portrait, controlled light",
-      "label": "Studio Study — Seba"
-    },
-    {
-      "image": "https://images.squarespace-cdn.com/content/v1/692422ebd1cc1f7694f596a6/b35422a6-425e-49fa-8d0f-328c428faba9/jareth1-744432.JPG",
-      "alt": "High-contrast studio portrait",
-      "label": "Studio Study — Jareth II"
-    },
-    {
-      "image": "https://images.squarespace-cdn.com/content/v1/692422ebd1cc1f7694f596a6/e2624211-cd35-45db-a10d-b88e6722bc5c/paula-48.jpg",
-      "alt": "Soft-light studio portrait",
-      "label": "Studio Study — Paula"
-    },
-    {
-      "image": "https://images.squarespace-cdn.com/content/v1/692422ebd1cc1f7694f596a6/87d66286-eece-4de8-b42c-9b36cf163cfa/1-24.jpg",
-      "alt": "Street portrait with natural shadows",
-      "label": "Street Portrait — 01"
-    },
-    {
-      "image": "https://images.squarespace-cdn.com/content/v1/692422ebd1cc1f7694f596a6/5cc2c8f5-a876-4992-ac46-e8296f6ad73a/LC49.jpg",
-      "alt": "Cinematic black and white street portrait",
-      "label": "Street Portrait — 02"
-    }
-  ],
-  "credentials": [
+    "studio": [
+      { "image": "https://images.squarespace-cdn.com/content/v1/692422ebd1cc1f7694f596a6/2f7b7d85-8156-4309-b3c5-7d329f129aa7/seba-744169.JPG", "alt": "Studio portrait, controlled light", "label": "Seba Study // I", "tag": "Studio Light" },
+      { "image": "https://images.squarespace-cdn.com/content/v1/692422ebd1cc1f7694f596a6/b35422a6-425e-49fa-8d0f-328c428faba9/jareth1-744432.JPG", "alt": "High-contrast studio portrait", "label": "Jareth Study // II", "tag": "High Contrast" },
+      { "image": "https://images.squarespace-cdn.com/content/v1/692422ebd1cc1f7694f596a6/e2624211-cd35-45db-a10d-b88e6722bc5c/paula-48.jpg", "alt": "Soft-light studio portrait", "label": "Paula Study // III", "tag": "Soft Scene" }
+    ],
+    "onLocation": [
+      { "image": "https://images.squarespace-cdn.com/content/v1/692422ebd1cc1f7694f596a6/87d66286-eece-4de8-b42c-9b36cf163cfa/1-24.jpg", "alt": "Street portrait with natural shadows", "label": "Street Portrait // 01", "tag": "Natural Shadows" },
+      { "image": "https://images.squarespace-cdn.com/content/v1/692422ebd1cc1f7694f596a6/5cc2c8f5-a876-4992-ac46-e8296f6ad73a/LC49.jpg", "alt": "Cinematic black and white street portrait", "label": "Street Portrait // 02", "tag": "Cinematic Black & White" }
+    ]
+  },
+  "legal": [
     {
       "title": "Public Liability Coverage",
       "description": "On-location and public-space shoots are covered by public liability insurance.",

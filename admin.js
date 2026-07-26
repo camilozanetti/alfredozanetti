@@ -3,23 +3,26 @@
 // schema, and publishes edits back through update-data.js.
 
 const SCHEMA = [
-  { key: 'site', label: 'Sitio', type: 'object', fields: [
+  { path: ['site'], label: 'Sitio', type: 'object', fields: [
     { key: 'brand', label: 'Marca', type: 'text' },
-    { key: 'brandSuffix', label: 'Sufijo de marca', type: 'text' },
     { key: 'tagline', label: 'Tagline', type: 'text' },
     { key: 'location', label: 'Ubicación', type: 'text' },
     { key: 'email', label: 'Email', type: 'text' },
     { key: 'whatsappNumber', label: 'WhatsApp (solo números, con código de país)', type: 'text' },
     { key: 'whatsappMessage', label: 'Mensaje predefinido de WhatsApp', type: 'textarea' },
     { key: 'instagramUrl', label: 'URL de Instagram', type: 'text' },
-    { key: 'ctaLabel', label: 'Texto del botón CTA', type: 'text' },
+    { key: 'ctaLabel', label: 'Texto del botón CTA (nav)', type: 'text' },
   ]},
-  { key: 'tracking', label: 'Analítica', type: 'object', fields: [
+  { path: ['tracking'], label: 'Analítica', type: 'object', fields: [
     { key: 'ga4Id', label: 'Google Analytics 4 ID', type: 'text' },
     { key: 'metaPixelId', label: 'Meta Pixel ID', type: 'text' },
     { key: 'gtmId', label: 'Google Tag Manager ID', type: 'text' },
   ]},
-  { key: 'hero', label: 'Hero', type: 'object', fields: [
+  { path: ['nav'], label: 'Tabs de navegación', type: 'objectList', itemLabel: 'Tab', fields: [
+    { key: 'id', label: 'ID (sin espacios, ej: portfolio)', type: 'text' },
+    { key: 'label', label: 'Texto visible', type: 'text' },
+  ]},
+  { path: ['hero'], label: 'Home / Hero', type: 'object', fields: [
     { key: 'eyebrow', label: 'Eyebrow', type: 'text' },
     { key: 'titleLine1', label: 'Título línea 1', type: 'text' },
     { key: 'titleLine2', label: 'Título línea 2 (dorado)', type: 'text' },
@@ -28,36 +31,54 @@ const SCHEMA = [
     { key: 'ctaLabel', label: 'Texto CTA', type: 'text' },
     { key: 'backgroundImage', label: 'URL imagen de fondo', type: 'text' },
   ]},
-  { key: 'about', label: 'Sobre mí', type: 'object', fields: [
+  { path: ['about'], label: 'The Sociological Eye (Sobre mí)', type: 'object', fields: [
     { key: 'eyebrow', label: 'Eyebrow', type: 'text' },
     { key: 'title', label: 'Título (admite <br>)', type: 'textarea' },
     { key: 'portraitImage', label: 'URL foto retrato', type: 'text' },
     { key: 'paragraphs', label: 'Párrafos', type: 'stringList' },
   ]},
-  { key: 'services', label: 'Servicios', type: 'objectList', itemLabel: 'Servicio', fields: [
+  { path: ['services'], label: 'Services', type: 'objectList', itemLabel: 'Servicio', fields: [
     { key: 'title', label: 'Título', type: 'text' },
     { key: 'description', label: 'Descripción', type: 'textarea' },
     { key: 'priceFrom', label: 'Precio desde', type: 'text' },
     { key: 'icon', label: 'Icono (Phosphor, ej: ph-hanger)', type: 'text' },
   ]},
-  { key: 'portfolio', label: 'Portfolio', type: 'objectList', itemLabel: 'Imagen', fields: [
+  { path: ['portfolio', 'intro'], label: 'Portfolio — imagen destacada', type: 'object', fields: [
+    { key: 'eyebrow', label: 'Eyebrow', type: 'text' },
+    { key: 'title', label: 'Título (admite HTML simple)', type: 'textarea' },
+    { key: 'paragraph', label: 'Párrafo', type: 'textarea' },
+    { key: 'image', label: 'URL imagen', type: 'text' },
+    { key: 'imageLabel', label: 'Etiqueta de la imagen', type: 'text' },
+  ]},
+  { path: ['portfolio', 'studio'], label: 'Portfolio — The Studio Collection', type: 'objectList', itemLabel: 'Foto', fields: [
     { key: 'image', label: 'URL imagen', type: 'text' },
     { key: 'alt', label: 'Texto alternativo', type: 'text' },
     { key: 'label', label: 'Etiqueta', type: 'text' },
+    { key: 'tag', label: 'Tag', type: 'text' },
   ]},
-  { key: 'credentials', label: 'Credenciales', type: 'objectList', itemLabel: 'Credencial', fields: [
+  { path: ['portfolio', 'onLocation'], label: 'Portfolio — On-Location Study', type: 'objectList', itemLabel: 'Foto', fields: [
+    { key: 'image', label: 'URL imagen', type: 'text' },
+    { key: 'alt', label: 'Texto alternativo', type: 'text' },
+    { key: 'label', label: 'Etiqueta', type: 'text' },
+    { key: 'tag', label: 'Tag', type: 'text' },
+  ]},
+  { path: ['legal'], label: 'Legal & Permits', type: 'objectList', itemLabel: 'Item', fields: [
     { key: 'title', label: 'Título', type: 'text' },
     { key: 'description', label: 'Descripción', type: 'textarea' },
     { key: 'icon', label: 'Icono', type: 'text' },
   ]},
-  { key: 'faq', label: 'Preguntas frecuentes', type: 'objectList', itemLabel: 'Pregunta', fields: [
+  { path: ['faq'], label: 'FAQ (en Contact)', type: 'objectList', itemLabel: 'Pregunta', fields: [
     { key: 'question', label: 'Pregunta', type: 'text' },
     { key: 'answer', label: 'Respuesta', type: 'textarea' },
   ]},
-  { key: 'footer', label: 'Footer', type: 'object', fields: [
+  { path: ['footer'], label: 'Footer', type: 'object', fields: [
     { key: 'text', label: 'Texto', type: 'text' },
   ]},
 ];
+
+function resolvePath(data, path) {
+  return path.reduce((obj, key) => obj[key], data);
+}
 
 const state = { token: null, displayName: null, data: null, sha: null };
 
@@ -237,15 +258,17 @@ function renderEditor() {
     h.textContent = section.label;
     wrap.appendChild(h);
 
+    const target = resolvePath(state.data, section.path);
+
     if (section.type === 'object') {
       const fieldsWrap = document.createElement('div');
       fieldsWrap.className = 'space-y-4';
-      renderObjectFields(fieldsWrap, state.data[section.key], section.fields);
+      renderObjectFields(fieldsWrap, target, section.fields);
       wrap.appendChild(fieldsWrap);
     } else if (section.type === 'stringList') {
-      renderStringList(wrap, state.data[section.key], section.label);
+      renderStringList(wrap, target, section.label);
     } else if (section.type === 'objectList') {
-      renderObjectList(wrap, state.data[section.key], section.fields, section.itemLabel);
+      renderObjectList(wrap, target, section.fields, section.itemLabel);
     }
 
     editorRoot.appendChild(wrap);
