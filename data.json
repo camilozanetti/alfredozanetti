@@ -4,9 +4,10 @@
     "tagline": "Fashion & portrait photography with a sociological eye.",
     "location": "Perth, Western Australia",
     "email": "hello@alfredozanetti.com",
+    "whatsappUrl": "https://wa.me/qr/VAOE7T26GHNFD1",
     "whatsappNumber": "61400000000",
     "whatsappMessage": "Hi Alfredo, I'd like to enquire about a shoot.",
-    "instagramUrl": "https://instagram.com/",
+    "instagramUrl": "https://www.instagram.com/az_creativelens/",
     "ctaLabel": "Book Shoot"
   },
   "tracking": {
@@ -36,27 +37,27 @@
     "portraitImage": "https://images.squarespace-cdn.com/content/v1/692422ebd1cc1f7694f596a6/e90cc68f-1c52-461a-b3f9-a6ff09428a1c/Blanca-25.jpg",
     "paragraphs": [
       "Before picking up a camera, Alfredo Zanetti studied sociology — reading status, movement and tension in a room. That same instinct now shapes every campaign, portfolio and portrait he shoots across Perth.",
-      "The result is a body of work that feels observed rather than staged: clean, cinematographic images built around real posture and natural light, informed by street style and the everyday texture of the city."
+      "The result is a body of work that blends controlled studio portraiture with the spontaneity and sensitivity developed through his background in street photography: clean, cinematographic images built around real posture, intentional lighting and the everyday texture of the city."
     ]
   },
   "services": [
     {
-      "title": "Fashion Campaigns",
-      "description": "Editorial-grade imagery for apparel and accessory brands, from concept through to final retouch.",
-      "priceFrom": "From $1,500 AUD",
-      "icon": "ph-hanger"
+      "title": "Essential Package",
+      "description": "45-minute session, studio or on-location. 15 professionally edited photos and an online gallery for selection. Perfect for personal portraits, basic branding and social media content.",
+      "priceFrom": "$150 AUD",
+      "icon": "ph-user-focus"
     },
     {
-      "title": "Model Portfolios",
-      "description": "Agency-ready books shot to industry spec — vertical crops, true-to-skin retouching, studio or on-location.",
-      "priceFrom": "From $600 AUD",
+      "title": "Professional Package",
+      "description": "1.5 hours across studio and one outdoor location, with 2–3 outfit changes. 25 professionally edited photos, online gallery and high-resolution downloads. For creators and professionals building a consistent visual identity.",
+      "priceFrom": "$250 AUD",
       "icon": "ph-image-square"
     },
     {
-      "title": "Portraits & Personal Branding",
-      "description": "Editorial-style portraits for founders, creatives and professionals who need a face that holds attention.",
-      "priceFrom": "From $350 AUD",
-      "icon": "ph-user-focus"
+      "title": "Signature Experience",
+      "description": "Up to 3 hours across studio and multiple outdoor locations, 1–2 models, unlimited wardrobe changes. 40 professionally edited photos, an optional short BTS video and a private gallery. For full branding sessions, creative concepts and model portfolios.",
+      "priceFrom": "$400 AUD",
+      "icon": "ph-hanger"
     }
   ],
   "portfolio": {
@@ -70,11 +71,17 @@
     "studio": [
       { "image": "https://images.squarespace-cdn.com/content/v1/692422ebd1cc1f7694f596a6/2f7b7d85-8156-4309-b3c5-7d329f129aa7/seba-744169.JPG", "alt": "Studio portrait, controlled light", "label": "Seba Study // I", "tag": "Studio Light" },
       { "image": "https://images.squarespace-cdn.com/content/v1/692422ebd1cc1f7694f596a6/b35422a6-425e-49fa-8d0f-328c428faba9/jareth1-744432.JPG", "alt": "High-contrast studio portrait", "label": "Jareth Study // II", "tag": "High Contrast" },
-      { "image": "https://images.squarespace-cdn.com/content/v1/692422ebd1cc1f7694f596a6/e2624211-cd35-45db-a10d-b88e6722bc5c/paula-48.jpg", "alt": "Soft-light studio portrait", "label": "Paula Study // III", "tag": "Soft Scene" }
+      { "image": "https://images.squarespace-cdn.com/content/v1/692422ebd1cc1f7694f596a6/e2624211-cd35-45db-a10d-b88e6722bc5c/paula-48.jpg", "alt": "Soft-light studio portrait", "label": "Paula Study // III", "tag": "Soft Scene" },
+      { "image": "https://images.squarespace-cdn.com/content/v1/692422ebd1cc1f7694f596a6/b3aa226a-9d54-4365-8678-529614e9ef28/seba-744133.JPG", "alt": "Studio portrait, controlled light", "label": "Seba Study // IV", "tag": "Studio Light" },
+      { "image": "https://images.squarespace-cdn.com/content/v1/692422ebd1cc1f7694f596a6/c2656c27-5c55-4025-9785-dca5fafa83a1/jareth1-744319.JPG", "alt": "High-contrast studio portrait", "label": "Jareth Study // V", "tag": "High Contrast" },
+      { "image": "https://images.squarespace-cdn.com/content/v1/692422ebd1cc1f7694f596a6/a3106567-b3b8-44a0-ba07-fc2267120d8d/Blanca-50.jpg", "alt": "Soft-light studio portrait", "label": "Blanca Study // VI", "tag": "Soft Scene" }
     ],
     "onLocation": [
       { "image": "https://images.squarespace-cdn.com/content/v1/692422ebd1cc1f7694f596a6/87d66286-eece-4de8-b42c-9b36cf163cfa/1-24.jpg", "alt": "Street portrait with natural shadows", "label": "Street Portrait // 01", "tag": "Natural Shadows" },
-      { "image": "https://images.squarespace-cdn.com/content/v1/692422ebd1cc1f7694f596a6/5cc2c8f5-a876-4992-ac46-e8296f6ad73a/LC49.jpg", "alt": "Cinematic black and white street portrait", "label": "Street Portrait // 02", "tag": "Cinematic Black & White" }
+      { "image": "https://images.squarespace-cdn.com/content/v1/692422ebd1cc1f7694f596a6/5cc2c8f5-a876-4992-ac46-e8296f6ad73a/LC49.jpg", "alt": "Cinematic black and white street portrait", "label": "Street Portrait // 02", "tag": "Cinematic Black & White" },
+      { "image": "https://images.squarespace-cdn.com/content/v1/692422ebd1cc1f7694f596a6/c0341852-852d-4399-a604-2d5d3687dff7/dani+36.JPG", "alt": "On-location portrait with natural light", "label": "Street Portrait // 03", "tag": "Natural Light" },
+      { "image": "https://images.squarespace-cdn.com/content/v1/692422ebd1cc1f7694f596a6/79c021e2-83e7-48f0-81ba-3ab3f5e26bc2/Cromo+74-56.jpg", "alt": "Cinematic black and white street portrait", "label": "Street Portrait // 04", "tag": "Cinematic Black & White" },
+      { "image": "https://images.squarespace-cdn.com/content/v1/692422ebd1cc1f7694f596a6/7a2d8453-b3dd-49bb-8b2e-a1e4083f0cd0/Benet-12.jpg", "alt": "Street portrait with natural shadows", "label": "Street Portrait // 05", "tag": "Natural Shadows" }
     ]
   },
   "legal": [

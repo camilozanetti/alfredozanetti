@@ -15,9 +15,10 @@ function escapeHtml(str) {
   return div.innerHTML;
 }
 
-function waLink(number, message) {
-  const digits = String(number || '').replace(/[^\d]/g, '');
-  const text = encodeURIComponent(message || '');
+function waLink(site) {
+  if (site.whatsappUrl) return site.whatsappUrl;
+  const digits = String(site.whatsappNumber || '').replace(/[^\d]/g, '');
+  const text = encodeURIComponent(site.whatsappMessage || '');
   return `https://wa.me/${digits}${text ? `?text=${text}` : ''}`;
 }
 
@@ -162,7 +163,7 @@ function renderNavTabs(data) {
 
 function renderHome(data) {
   const hero = data.hero;
-  const link = waLink(data.site.whatsappNumber, data.site.whatsappMessage);
+  const link = waLink(data.site);
   const section = document.getElementById('panel-home');
   section.innerHTML = `
     <div class="hero-media absolute inset-0 overflow-hidden">
@@ -281,8 +282,7 @@ function renderServices(data) {
             <p class="text-ink-soft text-[0.95rem] max-w-[52ch]">${escapeHtml(s.description)}</p>
           </div>
           <div class="col-span-2 sm:col-span-1 font-sans text-[0.95rem] whitespace-nowrap sm:text-right">
-            ${escapeHtml(s.priceFrom.replace(/^From\s*/i, ''))}
-            <small class="block text-[10px] uppercase tracking-widest text-ink-faint mt-0.5">From</small>
+            ${escapeHtml(s.priceFrom)}
           </div>
         </div>
       `).join('')}
@@ -310,7 +310,7 @@ function renderLegal(data) {
 }
 
 function renderContact(data) {
-  const link = waLink(data.site.whatsappNumber, data.site.whatsappMessage);
+  const link = waLink(data.site);
   const section = document.getElementById('panel-contact');
   section.innerHTML = `
     <div class="max-w-[1400px] mx-auto px-6 md:px-16 pt-32 md:pt-40 pb-24">
@@ -354,7 +354,7 @@ function renderFooter(data) {
 }
 
 function wireGlobalCtas(data) {
-  const link = waLink(data.site.whatsappNumber, data.site.whatsappMessage);
+  const link = waLink(data.site);
   document.getElementById('whatsapp-float').href = link;
 }
 
