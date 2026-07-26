@@ -1,0 +1,130 @@
+{
+  "site": {
+    "brand": "Zanetti",
+    "brandSuffix": "Photography",
+    "tagline": "Fashion & portrait photography with a sociological eye.",
+    "location": "Perth, Western Australia",
+    "email": "hello@alfredozanetti.com",
+    "whatsappNumber": "61400000000",
+    "whatsappMessage": "Hi Alfredo, I'd like to enquire about a shoot.",
+    "instagramUrl": "https://instagram.com/",
+    "ctaLabel": "Book a Shoot"
+  },
+  "tracking": {
+    "ga4Id": "",
+    "metaPixelId": "",
+    "gtmId": ""
+  },
+  "hero": {
+    "eyebrow": "Fashion & Portrait Photography — Perth, WA",
+    "titleLine1": "A clean,",
+    "titleLine2": "cinematic",
+    "titleLine2Suffix": "eye.",
+    "subtitle": "Alfredo Zanetti is a Perth-based photographer shooting fashion campaigns, model portfolios and portraits with an editorial, documentary sensibility.",
+    "ctaLabel": "Book a Shoot",
+    "backgroundImage": "https://images.squarespace-cdn.com/content/v1/692422ebd1cc1f7694f596a6/5cc2c8f5-a876-4992-ac46-e8296f6ad73a/LC49.jpg"
+  },
+  "about": {
+    "eyebrow": "The Sociological Eye",
+    "title": "Trained to read a room,<br>now trained on a lens.",
+    "portraitImage": "https://images.squarespace-cdn.com/content/v1/692422ebd1cc1f7694f596a6/e90cc68f-1c52-461a-b3f9-a6ff09428a1c/Blanca-25.jpg",
+    "paragraphs": [
+      "Before picking up a camera, Alfredo Zanetti studied sociology — reading status, movement and tension in a room. That same instinct now shapes every campaign, portfolio and portrait he shoots across Perth.",
+      "The result is a body of work that feels observed rather than staged: clean, cinematographic images built around real posture and natural light, informed by street style and the everyday texture of the city."
+    ]
+  },
+  "services": [
+    {
+      "title": "Fashion Campaigns",
+      "description": "Editorial-grade imagery for apparel and accessory brands, from concept through to final retouch.",
+      "priceFrom": "From $1,500 AUD",
+      "icon": "ph-hanger"
+    },
+    {
+      "title": "Model Portfolios",
+      "description": "Agency-ready books shot to industry spec — vertical crops, true-to-skin retouching, studio or on-location.",
+      "priceFrom": "From $600 AUD",
+      "icon": "ph-image-square"
+    },
+    {
+      "title": "Portraits & Personal Branding",
+      "description": "Editorial-style portraits for founders, creatives and professionals who need a face that holds attention.",
+      "priceFrom": "From $350 AUD",
+      "icon": "ph-user-focus"
+    }
+  ],
+  "portfolio": [
+    {
+      "image": "https://images.squarespace-cdn.com/content/v1/692422ebd1cc1f7694f596a6/c16628dd-e8f3-48ad-a6b2-e45d76b3be3e/jareth1.JPG",
+      "alt": "On-location portrait, natural light",
+      "label": "Portfolio Work — Jareth I"
+    },
+    {
+      "image": "https://images.squarespace-cdn.com/content/v1/692422ebd1cc1f7694f596a6/2f7b7d85-8156-4309-b3c5-7d329f129aa7/seba-744169.JPG",
+      "alt": "Studio portrait, controlled light",
+      "label": "Studio Study — Seba"
+    },
+    {
+      "image": "https://images.squarespace-cdn.com/content/v1/692422ebd1cc1f7694f596a6/b35422a6-425e-49fa-8d0f-328c428faba9/jareth1-744432.JPG",
+      "alt": "High-contrast studio portrait",
+      "label": "Studio Study — Jareth II"
+    },
+    {
+      "image": "https://images.squarespace-cdn.com/content/v1/692422ebd1cc1f7694f596a6/e2624211-cd35-45db-a10d-b88e6722bc5c/paula-48.jpg",
+      "alt": "Soft-light studio portrait",
+      "label": "Studio Study — Paula"
+    },
+    {
+      "image": "https://images.squarespace-cdn.com/content/v1/692422ebd1cc1f7694f596a6/87d66286-eece-4de8-b42c-9b36cf163cfa/1-24.jpg",
+      "alt": "Street portrait with natural shadows",
+      "label": "Street Portrait — 01"
+    },
+    {
+      "image": "https://images.squarespace-cdn.com/content/v1/692422ebd1cc1f7694f596a6/5cc2c8f5-a876-4992-ac46-e8296f6ad73a/LC49.jpg",
+      "alt": "Cinematic black and white street portrait",
+      "label": "Street Portrait — 02"
+    }
+  ],
+  "credentials": [
+    {
+      "title": "Public Liability Coverage",
+      "description": "On-location and public-space shoots are covered by public liability insurance.",
+      "icon": "ph-shield-check"
+    },
+    {
+      "title": "Permit Coordination",
+      "description": "Council permits for beaches, bridges and other public Perth locations are arranged ahead of the shoot.",
+      "icon": "ph-ticket"
+    },
+    {
+      "title": "Agency-Spec Delivery",
+      "description": "300 DPI, vertical 4:5 / 9:16 crops and true-texture retouching, ready for agency submission.",
+      "icon": "ph-check-circle"
+    }
+  ],
+  "faq": [
+    {
+      "question": "How far in advance should I book?",
+      "answer": "For campaigns and model portfolios, 2–3 weeks' notice is recommended to allow time for planning, location scouting and permits where needed."
+    },
+    {
+      "question": "What's included in a shoot package?",
+      "answer": "Every package includes pre-shoot planning, the session itself and a set of fully edited, delivery-ready images. Exact deliverables are confirmed in your quote."
+    },
+    {
+      "question": "Do you travel outside Perth?",
+      "answer": "Yes — shoots outside the metro area can be arranged, with travel costs quoted separately."
+    },
+    {
+      "question": "What's the turnaround time for edited images?",
+      "answer": "Standard turnaround is 5–10 business days, depending on the size of the shoot."
+    },
+    {
+      "question": "Do you require a deposit?",
+      "answer": "Yes, a deposit secures your date. The remaining balance is due on delivery of the final images."
+    }
+  ],
+  "footer": {
+    "text": "Fashion & portrait photography, based in Perth, Western Australia."
+  }
+}

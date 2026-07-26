@@ -1,0 +1,7 @@
+# Sensitive files that must never be served directly, even though they live
+# in the repo root (Netlify's publish directory is "/"). They are only ever
+# read via the GitHub Contents API inside netlify/functions, never fetched
+# by the browser.
+/users.json    /index.html   404
+
+/*             /index.html   200

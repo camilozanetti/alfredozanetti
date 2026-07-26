@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Panel de administración — Zanetti Photography</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/@phosphor-icons/web" defer></script>
+
+    <script>
+        tailwind.config = {
+            theme: { extend: {
+                colors: {
+                    'jet-black':    '#0A0A0A',
+                    'bone-white':   '#F9F8F6',
+                    'warm-cotton':  '#F4EFE6',
+                    'aged-gold':    '#C6A15B',
+                    'dry-stone':    '#8C8882',
+                    'surface-card': '#121213',
+                }
+            }}
+        }
+    </script>
+    <style>
+        body { background-color: #0A0A0A; color: #F9F8F6; font-family: system-ui, sans-serif; }
+        input, textarea { background: #121213; border: 1px solid rgba(255,255,255,0.1); color: #F9F8F6; }
+        input:focus, textarea:focus { outline: none; border-color: #C6A15B; }
+        label { color: #8C8882; }
+    </style>
+</head>
+<body class="min-h-screen">
+
+    <!-- LOGIN -->
+    <div id="login-view" class="min-h-screen flex items-center justify-center px-4">
+        <form id="login-form" class="w-full max-w-sm space-y-5 bg-surface-card border border-white/10 rounded-2xl p-8">
+            <h1 class="text-xl font-semibold text-bone-white">Panel de administración</h1>
+            <p id="login-error" class="hidden text-sm text-red-400"></p>
+            <div class="space-y-2">
+                <label class="block text-xs uppercase tracking-widest">Usuario</label>
+                <input id="login-user" type="text" required autocomplete="username" class="w-full rounded-lg px-3 py-2 text-sm">
+            </div>
+            <div class="space-y-2">
+                <label class="block text-xs uppercase tracking-widest">Contraseña</label>
+                <input id="login-pass" type="password" required autocomplete="current-password" class="w-full rounded-lg px-3 py-2 text-sm">
+            </div>
+            <button type="submit" class="w-full bg-aged-gold text-jet-black font-semibold rounded-lg py-2.5 text-sm hover:opacity-90 transition">Entrar</button>
+        </form>
+    </div>
+
+    <!-- CMS -->
+    <div id="cms-view" class="hidden min-h-screen">
+        <header class="sticky top-0 z-10 bg-jet-black/95 backdrop-blur border-b border-white/10 px-6 py-4 flex justify-between items-center">
+            <div>
+                <h1 class="text-sm font-semibold text-bone-white">CMS — <span id="cms-display-name"></span></h1>
+                <p id="cms-status" class="text-xs text-dry-stone mt-0.5"></p>
+            </div>
+            <div class="flex gap-3">
+                <button id="logout-btn" class="text-xs uppercase tracking-widest text-dry-stone hover:text-bone-white transition">Cerrar sesión</button>
+                <button id="save-btn" class="bg-aged-gold text-jet-black text-xs font-bold uppercase tracking-widest px-5 py-2.5 rounded-full hover:opacity-90 transition">Publicar cambios</button>
+            </div>
+        </header>
+
+        <main id="editor-root" class="max-w-3xl mx-auto px-6 py-10 space-y-10"></main>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html>

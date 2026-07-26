@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zanetti Photography — Fashion & Portrait Photographer in Perth, WA</title>
+    <meta name="description" content="Alfredo Zanetti is a Perth-based fashion and portrait photographer shooting campaigns, model portfolios and portraits with an editorial, documentary sensibility.">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web" defer></script>
+
+    <link rel="stylesheet" href="styles.css">
+
+    <script>
+        tailwind.config = {
+            theme: { extend: {
+                colors: {
+                    'jet-black':    '#0A0A0A',
+                    'bone-white':   '#F9F8F6',
+                    'warm-cotton':  '#F4EFE6',
+                    'aged-gold':    '#C6A15B',
+                    'dry-stone':    '#8C8882',
+                    'surface-card': '#121213',
+                },
+                fontFamily: {
+                    sans:  ['"DM Sans"', 'sans-serif'],
+                    serif: ['"Cormorant Garamond"', 'serif'],
+                    mono:  ['"JetBrains Mono"', 'monospace'],
+                },
+                borderRadius: { 'saas': '1.5rem', 'pill': '9999px' },
+            }}
+        }
+    </script>
+</head>
+<body class="font-sans bg-jet-black text-bone-white selection:bg-aged-gold selection:text-jet-black">
+
+    <div class="noise"></div>
+    <div id="progress-bar"></div>
+
+    <!-- Nav pill flotante -->
+    <nav id="main-nav" class="fixed w-full z-50 top-4 px-4">
+        <div class="max-w-[1050px] mx-auto bg-warm-cotton/90 backdrop-blur-2xl border border-white/10 shadow-sm rounded-full h-14 flex justify-between items-center px-5 md:px-8">
+            <a href="/" class="font-serif italic text-[1.15rem] text-jet-black hover:text-aged-gold transition-colors">Zanetti<span class="text-aged-gold">.</span></a>
+            <div class="hidden md:flex gap-8 text-[10px] font-mono uppercase tracking-widest text-jet-black/70">
+                <a href="#portfolio" class="hover:text-aged-gold transition-colors">Portfolio</a>
+                <a href="#about" class="hover:text-aged-gold transition-colors">About</a>
+                <a href="#services" class="hover:text-aged-gold transition-colors">Services</a>
+            </div>
+            <a id="nav-cta" href="#" target="_blank" rel="noopener" class="bg-jet-black text-bone-white px-6 py-2.5 rounded-full text-[10px] font-mono font-bold uppercase tracking-widest hover:bg-aged-gold hover:text-jet-black transition-all">Book a Shoot</a>
+        </div>
+    </nav>
+
+    <!-- WhatsApp flotante -->
+    <a id="whatsapp-float" href="#" target="_blank" rel="noopener"
+       class="fixed bottom-7 right-5 z-50 flex items-center justify-center w-12 h-12 bg-[#25D366] rounded-full shadow-[0_6px_20px_rgba(37,211,102,0.45)] hover:scale-110 transition-transform">
+        <i class="ph-fill ph-whatsapp-logo text-white text-2xl"></i>
+    </a>
+
+    <!-- Sticky CTA mobile -->
+    <div id="sticky-cta" class="fixed bottom-0 left-0 right-0 z-40 lg:hidden bg-surface-card border-t border-white/10 px-4 py-3 shadow-2xl">
+        <a id="sticky-cta-link" href="#" target="_blank" rel="noopener" class="flex items-center justify-center gap-3 bg-[#25D366] text-white rounded-full py-3.5 font-mono text-[10px] font-bold uppercase tracking-widest hover:bg-[#20ba58] transition-all">
+            Message on WhatsApp <i class="ph ph-whatsapp-logo"></i>
+        </a>
+    </div>
+
+    <!-- Main container -->
+    <main class="max-w-[1060px] mx-auto px-4 sm:px-5 pt-[4.5rem] pb-32 lg:pb-20 space-y-4 md:space-y-5">
+
+        <section id="hero-section" class="relative rounded-[2rem] md:rounded-[2.5rem] overflow-hidden bg-jet-black min-h-[92vh] flex flex-col justify-end px-6 sm:px-10 md:px-14 lg:px-16 pb-14 sm:pb-18 md:pb-24 shadow-2xl">
+            <!-- populated by main.js: background image, gradient overlay, hero copy -->
+        </section>
+
+        <section id="about" class="scroll-mt-24 bg-surface-card rounded-[2rem] md:rounded-[2.5rem] border border-white/5 px-6 sm:px-10 md:px-14 lg:px-16 py-16 md:py-22">
+            <!-- populated by main.js -->
+        </section>
+
+        <section id="services" class="scroll-mt-24 bg-warm-cotton text-jet-black rounded-[2rem] md:rounded-[2.5rem] px-6 sm:px-10 md:px-14 lg:px-16 py-16 md:py-22">
+            <!-- populated by main.js -->
+        </section>
+
+        <section id="portfolio" class="scroll-mt-24 rounded-[2rem] md:rounded-[2.5rem] px-2 sm:px-4 py-4">
+            <!-- populated by main.js -->
+        </section>
+
+        <section id="credentials" class="bg-surface-card rounded-[2rem] md:rounded-[2.5rem] border border-white/5 px-6 sm:px-10 md:px-14 lg:px-16 py-16 md:py-22">
+            <!-- populated by main.js -->
+        </section>
+
+        <section id="faq" class="bg-warm-cotton text-jet-black rounded-[2rem] md:rounded-[2.5rem] px-6 sm:px-10 md:px-14 lg:px-16 py-16 md:py-22">
+            <!-- populated by main.js -->
+        </section>
+
+        <section id="contacto" class="scroll-mt-24 bg-jet-black border border-aged-gold/20 rounded-[2rem] md:rounded-[2.5rem] px-6 sm:px-10 md:px-14 lg:px-16 py-16 md:py-22 text-center">
+            <!-- populated by main.js -->
+        </section>
+
+    </main>
+
+    <footer id="site-footer" class="border-t border-white/5 py-16 text-center px-4">
+        <!-- populated by main.js -->
+    </footer>
+
+    <script src="tracking.js"></script>
+    <script src="main.js"></script>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+        }, { threshold: 0.12 });
+        document.addEventListener('content:rendered', () => {
+          document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        });
+
+        const bar = document.getElementById('progress-bar');
+        if (bar) window.addEventListener('scroll', () => {
+          bar.style.width = (window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100) + '%';
+        });
+
+        const nav = document.getElementById('main-nav');
+        if (nav) window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 50));
+
+        const cta = document.getElementById('sticky-cta');
+        if (cta) window.addEventListener('scroll', () => cta.classList.toggle('visible', window.scrollY > 400));
+    </script>
+</body>
+</html>

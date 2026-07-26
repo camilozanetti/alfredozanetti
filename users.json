@@ -1,0 +1,13 @@
+{
+  "admin_access": {
+    "user": "admin",
+    "pass": "TGwAJy8HCSd%hMubXNBs",
+    "display_name": "Alfredo Zanetti"
+  },
+  "usuarios": [],
+  "github_config": {
+    "repo": "camilozanetti/alfredozanetti",
+    "branch": "main",
+    "data_file": "data.json"
+  }
+}
