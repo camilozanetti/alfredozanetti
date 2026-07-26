@@ -173,7 +173,7 @@ function renderHome(data) {
     <div class="hidden md:block absolute right-6 lg:right-10 z-10" style="top:7rem; writing-mode:vertical-rl; letter-spacing:.18em;" aria-hidden="true">
       <span class="font-sans text-[11px] text-white/60">${escapeHtml(data.site.location.toUpperCase())}</span>
     </div>
-    <div class="relative z-10 min-h-screen flex flex-col justify-end px-6 md:px-16 pb-16 md:pb-24">
+    <div class="relative z-10 min-h-screen flex flex-col justify-end px-6 md:px-16 pt-28 md:pt-32 pb-16 md:pb-24">
       <div class="reveal flex items-center gap-2.5 mb-6 font-sans text-[11px] sm:text-xs text-white/75 uppercase tracking-[0.22em]">
         <span class="pulse-dot w-1.5 h-1.5 bg-white rounded-full flex-shrink-0"></span>
         ${escapeHtml(hero.eyebrow)}
