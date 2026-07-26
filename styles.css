@@ -38,6 +38,9 @@ img, video { display: block; max-width: 100%; }
    drive entrance animation on activation rather than relying purely on
    scroll IntersectionObserver, since a hidden panel never intersects. */
 [role="tabpanel"][hidden] { display: none !important; }
+[role="tabpanel"] { opacity: 1; transition: opacity 0.22s ease; }
+[role="tabpanel"].panel-entering,
+[role="tabpanel"].panel-leaving { opacity: 0; }
 
 details summary { list-style: none; cursor: pointer; user-select: none; }
 details summary::-webkit-details-marker { display: none; }

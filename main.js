@@ -27,14 +27,22 @@ function tabIds() {
   return ['home', ...siteData.nav.map((n) => n.id)];
 }
 
+const PANEL_TRANSITION_MS = 180;
+
+function playEntrance(panel) {
+  panel.querySelectorAll('.reveal').forEach((el) => el.classList.remove('visible'));
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      panel.querySelectorAll('.reveal').forEach((el) => el.classList.add('visible'));
+    });
+  });
+}
+
 function route() {
   const requested = (location.hash || '#home').slice(1);
   const targetId = tabIds().includes(requested) ? requested : 'home';
-
-  document.querySelectorAll('[role="tabpanel"]').forEach((panel) => {
-    const active = panel.dataset.panel === targetId;
-    panel.hidden = !active;
-  });
+  const nextPanel = document.querySelector(`[data-panel="${targetId}"]`);
+  const currentPanel = document.querySelector('[role="tabpanel"]:not([hidden])');
 
   document.querySelectorAll('[role="tab"]').forEach((tab) => {
     const active = tab.dataset.tab === targetId;
@@ -42,17 +50,65 @@ function route() {
     tab.tabIndex = active ? 0 : -1;
   });
 
-  // IntersectionObserver never fires for elements inside a hidden panel, so
-  // entrance animation is triggered directly on activation instead.
-  const activePanel = document.querySelector(`[data-panel="${targetId}"]`);
-  activePanel.querySelectorAll('.reveal').forEach((el) => el.classList.remove('visible'));
-  requestAnimationFrame(() => {
-    requestAnimationFrame(() => {
-      activePanel.querySelectorAll('.reveal').forEach((el) => el.classList.add('visible'));
-    });
-  });
+  const whatsappFloat = document.getElementById('whatsapp-float');
+  if (whatsappFloat) {
+    const showFloat = targetId !== 'home';
+    whatsappFloat.classList.toggle('opacity-0', !showFloat);
+    whatsappFloat.classList.toggle('scale-75', !showFloat);
+    whatsappFloat.classList.toggle('pointer-events-none', !showFloat);
+    whatsappFloat.classList.toggle('opacity-100', showFloat);
+    whatsappFloat.classList.toggle('scale-100', showFloat);
+    whatsappFloat.classList.toggle('pointer-events-auto', showFloat);
+  }
 
+  setMobileMenuOpen(false);
   window.scrollTo(0, 0);
+
+  if (!currentPanel || currentPanel === nextPanel) {
+    nextPanel.hidden = false;
+    playEntrance(nextPanel);
+    return;
+  }
+
+  // Cross-fade: fade the outgoing panel out, then swap `hidden` (which is
+  // what actually removes it from layout/a11y tree), then fade the new one
+  // in — avoids the abrupt cut of a plain hidden-attribute toggle.
+  currentPanel.classList.add('panel-leaving');
+  setTimeout(() => {
+    currentPanel.hidden = true;
+    currentPanel.classList.remove('panel-leaving');
+
+    nextPanel.classList.add('panel-entering');
+    nextPanel.hidden = false;
+    requestAnimationFrame(() => {
+      nextPanel.classList.remove('panel-entering');
+      playEntrance(nextPanel);
+    });
+  }, PANEL_TRANSITION_MS);
+}
+
+function setMobileMenuOpen(open) {
+  const menu = document.getElementById('mobile-menu');
+  const toggle = document.getElementById('menu-toggle');
+  if (!menu || !toggle) return;
+  menu.classList.toggle('opacity-0', !open);
+  menu.classList.toggle('pointer-events-none', !open);
+  menu.setAttribute('aria-hidden', String(!open));
+  toggle.setAttribute('aria-expanded', String(open));
+  toggle.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+  toggle.querySelector('i').className = open ? 'ph ph-x text-2xl' : 'ph ph-list text-2xl';
+  document.body.classList.toggle('overflow-hidden', open);
+}
+
+function wireMobileMenu() {
+  const toggle = document.getElementById('menu-toggle');
+  const menu = document.getElementById('mobile-menu');
+  toggle.addEventListener('click', () => {
+    setMobileMenuOpen(menu.classList.contains('opacity-0'));
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') setMobileMenuOpen(false);
+  });
 }
 
 function wireTabKeyboardNav() {
@@ -321,6 +377,7 @@ fetch('/data.json')
     route();
     window.addEventListener('hashchange', route);
     wireTabKeyboardNav();
+    wireMobileMenu();
   })
   .catch((err) => {
     console.error('Could not load site content from data.json', err);

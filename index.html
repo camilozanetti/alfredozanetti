@@ -51,19 +51,32 @@
                 Zanetti<span class="text-aged-gold">.</span>
             </a>
             <div role="tablist" aria-label="Secciones" class="hidden md:flex gap-8 text-[9px] font-sans tracking-widest uppercase">
-                <!-- tabs injected by main.js -->
+                <!-- desktop tabs injected by main.js -->
             </div>
-            <a id="nav-cta" href="#contact" data-tab="contact" class="bg-warm-cotton text-jet-black px-5 py-2 rounded-full font-sans text-[9px] font-semibold uppercase tracking-widest hover:bg-aged-gold transition">
-                Book Shoot
-            </a>
+            <div class="flex items-center gap-3">
+                <a id="nav-cta" href="#contact" data-tab="contact" class="hidden md:inline-flex bg-warm-cotton text-jet-black px-5 py-2 rounded-full font-sans text-[9px] font-semibold uppercase tracking-widest hover:bg-aged-gold transition">
+                    Book Shoot
+                </a>
+                <button id="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Abrir menú"
+                        class="md:hidden w-9 h-9 flex items-center justify-center text-bone-white">
+                    <i class="ph ph-list text-2xl"></i>
+                </button>
+            </div>
         </div>
-        <!-- mobile tabs -->
-        <div id="mobile-tabs" role="tablist" aria-label="Secciones (móvil)" class="md:hidden flex gap-5 overflow-x-auto px-6 pb-3 text-[9px] font-sans tracking-widest uppercase whitespace-nowrap"></div>
     </nav>
 
-    <!-- WhatsApp flotante -->
+    <!-- Mobile full-screen menu -->
+    <div id="mobile-menu" aria-hidden="true"
+         class="md:hidden fixed inset-0 z-40 bg-jet-black/98 backdrop-blur-xl flex flex-col items-center justify-center gap-10 opacity-0 pointer-events-none transition-opacity duration-300">
+        <div role="tablist" aria-label="Secciones (móvil)" id="mobile-tabs" class="flex flex-col items-center gap-7 text-2xl font-playfair italic"></div>
+        <a id="mobile-cta" href="#contact" data-tab="contact" class="bg-warm-cotton text-jet-black px-8 py-3 rounded-full font-sans text-[10px] font-semibold uppercase tracking-widest">
+            Book Shoot
+        </a>
+    </div>
+
+    <!-- WhatsApp flotante (oculto en Home: el hero ya tiene su propio CTA) -->
     <a id="whatsapp-float" href="#" target="_blank" rel="noopener"
-       class="fixed bottom-7 right-5 z-50 flex items-center justify-center w-12 h-12 bg-[#25D366] rounded-full shadow-[0_6px_20px_rgba(37,211,102,0.45)] hover:scale-110 transition-transform">
+       class="fixed bottom-7 right-5 z-50 flex items-center justify-center w-12 h-12 bg-[#25D366] rounded-full shadow-[0_6px_20px_rgba(37,211,102,0.45)] hover:scale-110 opacity-0 scale-75 pointer-events-none transition-all duration-300">
         <i class="ph-fill ph-whatsapp-logo text-white text-2xl"></i>
     </a>
 
