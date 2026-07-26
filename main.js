@@ -143,7 +143,8 @@ function renderNavTabs(data) {
   mobile.innerHTML = '';
 
   data.nav.forEach((item) => {
-    [{ container: desktop, prefix: 'tab' }, { container: mobile, prefix: 'tab-m' }].forEach(({ container, prefix }) => {
+    [{ container: desktop, prefix: 'tab', cls: 'font-sans text-[11px] uppercase tracking-widest' },
+     { container: mobile, prefix: 'tab-m', cls: '' }].forEach(({ container, prefix, cls }) => {
       const a = document.createElement('a');
       a.href = `#${item.id}`;
       a.dataset.tab = item.id;
@@ -152,7 +153,7 @@ function renderNavTabs(data) {
       a.setAttribute('aria-controls', `panel-${item.id}`);
       a.setAttribute('aria-selected', 'false');
       a.tabIndex = -1;
-      a.className = 'text-dry-stone hover:text-aged-gold transition-colors';
+      if (cls) a.className = cls;
       a.textContent = item.label;
       container.appendChild(a);
     });
@@ -164,23 +165,28 @@ function renderHome(data) {
   const link = waLink(data.site.whatsappNumber, data.site.whatsappMessage);
   const section = document.getElementById('panel-home');
   section.innerHTML = `
-    <img src="${escapeHtml(hero.backgroundImage)}" alt="" class="absolute inset-0 w-full h-full object-cover" style="opacity:0.35;">
-    <div class="absolute inset-0" style="background:linear-gradient(160deg,rgba(10,10,10,0.25) 0%,rgba(10,10,10,0.92) 70%,rgba(10,10,10,1) 100%)"></div>
-    <div class="relative z-10 max-w-[780px]">
-      <div class="reveal flex items-center gap-2.5 mb-8 w-fit bg-white/[0.06] border border-white/[0.12] backdrop-blur-sm px-4 py-2 rounded-full">
-        <span class="pulse-dot w-2 h-2 bg-aged-gold rounded-full flex-shrink-0"></span>
-        <span class="font-sans text-[9px] sm:text-[10px] text-dry-stone uppercase tracking-[0.28em] font-bold">${escapeHtml(hero.eyebrow)}</span>
+    <div class="hero-media absolute inset-0 overflow-hidden">
+      <img src="${escapeHtml(hero.backgroundImage)}" alt="" class="w-full h-full object-cover">
+    </div>
+    <div class="absolute inset-0" style="background:linear-gradient(0deg, rgba(6,6,5,.88) 0%, rgba(6,6,5,.32) 46%, rgba(6,6,5,0) 68%)"></div>
+    <div class="hidden md:block absolute right-6 lg:right-10 z-10" style="top:7rem; writing-mode:vertical-rl; letter-spacing:.18em;" aria-hidden="true">
+      <span class="font-sans text-[11px] text-white/60">${escapeHtml(data.site.location.toUpperCase())}</span>
+    </div>
+    <div class="relative z-10 min-h-screen flex flex-col justify-end px-6 md:px-16 pb-16 md:pb-24">
+      <div class="reveal flex items-center gap-2.5 mb-6 font-sans text-[11px] sm:text-xs text-white/75 uppercase tracking-[0.22em]">
+        <span class="pulse-dot w-1.5 h-1.5 bg-white rounded-full flex-shrink-0"></span>
+        ${escapeHtml(hero.eyebrow)}
       </div>
-      <h1 class="reveal reveal-delay-1 font-playfair italic text-bone-white mb-8 f-hero">
+      <h1 class="reveal reveal-delay-1 font-serif text-white f-hero max-w-[16ch]">
         ${escapeHtml(hero.titleLine1)}<br>
-        <span class="gold-text">${escapeHtml(hero.titleLine2)}</span> ${escapeHtml(hero.titleLine2Suffix)}
+        <em class="font-medium">${escapeHtml(hero.titleLine2)}</em> ${escapeHtml(hero.titleLine2Suffix)}
       </h1>
-      <p class="reveal reveal-delay-2 font-cormorant text-xl sm:text-2xl italic text-dry-stone leading-relaxed mb-10 max-w-[520px]">
+      <p class="reveal reveal-delay-2 font-sans text-base sm:text-lg text-white/80 leading-relaxed mt-6 mb-9 max-w-[36ch]">
         ${escapeHtml(hero.subtitle)}
       </p>
       <div class="reveal reveal-delay-3">
-        <a href="${link}" target="_blank" rel="noopener" class="group inline-flex items-center gap-3 bg-[#25D366] text-white px-10 py-5 rounded-full font-bold text-[11px] sm:text-[12px] uppercase tracking-widest hover:bg-[#20ba58] transition-all shadow-2xl hover:shadow-[0_0_0_6px_rgba(37,211,102,0.2)]">
-          ${escapeHtml(hero.ctaLabel)} <i class="ph ph-whatsapp-logo group-hover:translate-x-1 transition-transform"></i>
+        <a href="${link}" target="_blank" rel="noopener" class="group inline-flex items-center gap-3 border border-white text-white px-8 py-4 font-sans text-[11px] font-medium uppercase tracking-widest hover:bg-white hover:text-ink transition-colors">
+          ${escapeHtml(hero.ctaLabel)} <i class="ph ph-whatsapp-logo"></i>
         </a>
       </div>
     </div>
@@ -191,56 +197,50 @@ function renderPortfolio(data) {
   const p = data.portfolio;
   const section = document.getElementById('panel-portfolio');
   section.innerHTML = `
-    <div class="grid md:grid-cols-12 gap-12 items-center">
-      <div class="md:col-span-5 space-y-6">
-        <p class="reveal font-sans text-[9px] text-aged-gold tracking-[0.4em] uppercase">${escapeHtml(p.intro.eyebrow)}</p>
-        <h2 class="reveal reveal-delay-1 font-playfair text-3xl md:text-5xl text-bone-white leading-tight">${p.intro.title}</h2>
-        <p class="reveal reveal-delay-2 font-cormorant text-xl text-dry-stone leading-relaxed">${escapeHtml(p.intro.paragraph)}</p>
+    <div class="grid md:grid-cols-2 gap-10 md:gap-14 items-end mb-20 md:mb-28">
+      <div class="plate reveal aspect-[4/5]">
+        <img src="${escapeHtml(p.intro.image)}" alt="${escapeHtml(p.intro.imageLabel)}">
+        <span class="plate__folio">${escapeHtml(p.intro.imageLabel)}</span>
       </div>
-      <div class="reveal reveal-delay-2 md:col-span-7 aspect-[4/5] rounded-3xl overflow-hidden border border-white/10 bg-surface-card relative">
-        <img src="${escapeHtml(p.intro.image)}" class="w-full h-full object-cover" alt="${escapeHtml(p.intro.imageLabel)}">
-        <div class="absolute bottom-6 left-6 bg-black/40 backdrop-blur-md px-3 py-1 rounded border border-white/10">
-          <p class="font-sans text-[8px] tracking-widest text-aged-gold">${escapeHtml(p.intro.imageLabel)}</p>
-        </div>
+      <div>
+        <p class="reveal font-sans text-[11px] font-medium text-ink-faint uppercase tracking-[0.2em] mb-4">${escapeHtml(p.intro.eyebrow)}</p>
+        <h2 class="reveal reveal-delay-1 font-serif f-section mb-5">${p.intro.title}</h2>
+        <p class="reveal reveal-delay-2 text-ink-soft leading-relaxed max-w-[46ch]">${escapeHtml(p.intro.paragraph)}</p>
       </div>
     </div>
 
-    <div class="space-y-8">
-      <div class="flex justify-between items-end border-b border-white/5 pb-4">
-        <h3 class="reveal font-playfair text-2xl italic text-bone-white">The Studio Collection</h3>
-        <span class="reveal font-sans text-[9px] text-dry-stone tracking-widest uppercase">${p.studio.length} selected shots</span>
+    <div class="mb-20 md:mb-24">
+      <div class="reveal flex justify-between items-baseline border-b border-line pb-4 mb-8">
+        <h3 class="font-serif italic text-2xl">The Studio Collection</h3>
+        <span class="font-sans text-[11px] text-ink-faint uppercase tracking-widest">Controlled Light</span>
       </div>
-      <div class="grid md:grid-cols-3 gap-8">
+      <div class="grid md:grid-cols-[2fr_1.3fr_1.3fr] gap-5">
         ${p.studio.map((s, i) => `
-          <div class="reveal reveal-delay-${Math.min(i + 1, 3)} space-y-4">
-            <div class="aspect-[2/3] rounded-2xl overflow-hidden border border-white/5 bg-surface-card">
-              <img src="${escapeHtml(s.image)}" class="w-full h-full object-cover" alt="${escapeHtml(s.alt)}">
+          <figure class="reveal reveal-delay-${Math.min(i + 1, 3)}">
+            <div class="plate" style="aspect-ratio:3/4;">
+              <img src="${escapeHtml(s.image)}" alt="${escapeHtml(s.alt)}">
+              <span class="plate__folio">0${i + 1}/05</span>
             </div>
-            <div class="flex justify-between text-[8px] font-sans text-dry-stone tracking-widest uppercase">
-              <span>${escapeHtml(s.label)}</span>
-              <span>${escapeHtml(s.tag)}</span>
-            </div>
-          </div>
+            <figcaption class="figcap"><em>${escapeHtml(s.label.split(' Study')[0] || s.label)}</em><span>${escapeHtml(s.tag)}</span></figcaption>
+          </figure>
         `).join('')}
       </div>
     </div>
 
-    <div class="space-y-8">
-      <div class="flex justify-between items-end border-b border-white/5 pb-4">
-        <h3 class="reveal font-playfair text-2xl italic text-bone-white">On-Location Study</h3>
-        <span class="reveal font-sans text-[9px] text-dry-stone tracking-widest uppercase">Natural light in Perth</span>
+    <div>
+      <div class="reveal flex justify-between items-baseline border-b border-line pb-4 mb-8">
+        <h3 class="font-serif italic text-2xl">On-Location Study</h3>
+        <span class="font-sans text-[11px] text-ink-faint uppercase tracking-widest">Perth Streets</span>
       </div>
-      <div class="grid md:grid-cols-2 gap-8">
+      <div class="grid md:grid-cols-[1.5fr_1fr] gap-5">
         ${p.onLocation.map((s, i) => `
-          <div class="reveal reveal-delay-${Math.min(i + 1, 3)} space-y-4">
-            <div class="aspect-[16/10] rounded-2xl overflow-hidden border border-white/5 bg-surface-card">
-              <img src="${escapeHtml(s.image)}" class="w-full h-full object-cover" alt="${escapeHtml(s.alt)}">
+          <figure class="reveal reveal-delay-${Math.min(i + 1, 3)}">
+            <div class="plate" style="aspect-ratio:${i === 0 ? '4/5' : '3/5'};">
+              <img src="${escapeHtml(s.image)}" alt="${escapeHtml(s.alt)}">
+              <span class="plate__folio">0${i + 4}/05</span>
             </div>
-            <div class="flex justify-between text-[8px] font-sans text-dry-stone tracking-widest uppercase">
-              <span>${escapeHtml(s.label)}</span>
-              <span>${escapeHtml(s.tag)}</span>
-            </div>
-          </div>
+            <figcaption class="figcap"><em>${escapeHtml(s.label.split(' //')[0] || s.label)}</em><span>${escapeHtml(s.tag)}</span></figcaption>
+          </figure>
         `).join('')}
       </div>
     </div>
@@ -251,36 +251,39 @@ function renderAbout(data) {
   const about = data.about;
   const section = document.getElementById('panel-about');
   section.innerHTML = `
-    <div class="text-[9px] font-sans text-aged-gold uppercase tracking-[0.3em] mb-4 reveal">${escapeHtml(about.eyebrow)}</div>
-    <div class="border-b border-white/5 pb-6 mb-12">
-      <h2 class="reveal reveal-delay-1 font-playfair text-3xl md:text-5xl uppercase tracking-widest text-bone-white">${about.title}</h2>
-    </div>
-    <div class="grid md:grid-cols-12 gap-12 items-center">
-      <div class="md:col-span-7 space-y-6 font-cormorant text-xl text-dry-stone leading-relaxed">
-        ${about.paragraphs.map((p, i) => `<p class="reveal reveal-delay-${Math.min(i + 2, 3)}">${escapeHtml(p)}</p>`).join('')}
+    <div class="grid md:grid-cols-[.9fr_1.3fr] gap-10 md:gap-0 items-start">
+      <div class="plate reveal aspect-[4/5]">
+        <img src="${escapeHtml(about.portraitImage)}" alt="Photography by Alfredo Zanetti">
       </div>
-      <div class="reveal reveal-delay-2 md:col-span-5 relative w-full aspect-[3/4] rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl bg-jet-black">
-        <img src="${escapeHtml(about.portraitImage)}" class="w-full h-full object-cover" alt="Photography by Alfredo Zanetti">
-        <div class="absolute inset-0 bg-gradient-to-t from-jet-black via-transparent to-transparent"></div>
+      <div class="md:pl-14 md:-ml-8">
+        <p class="reveal font-sans text-[11px] font-medium text-ink-faint uppercase tracking-[0.2em] mb-3">${escapeHtml(about.eyebrow)}</p>
+        <p class="reveal reveal-delay-1 font-serif italic font-medium f-quote mb-8">${about.title}</p>
+        <div class="space-y-5 max-w-[48ch]">
+          ${about.paragraphs.map((p, i) => `<p class="reveal reveal-delay-${Math.min(i + 2, 3)} text-ink-soft leading-relaxed">${escapeHtml(p)}</p>`).join('')}
+        </div>
       </div>
     </div>
   `;
 }
 
 function renderServices(data) {
+  const romanNumerals = ['I', 'II', 'III', 'IV', 'V', 'VI'];
   const section = document.getElementById('panel-services');
   section.innerHTML = `
-    <div class="text-[9px] font-sans text-aged-gold uppercase tracking-[0.3em] mb-4 reveal">Services</div>
-    <div class="border-b border-white/5 pb-6 mb-12">
-      <h2 class="reveal reveal-delay-1 font-playfair text-3xl md:text-5xl uppercase tracking-widest text-bone-white">What I <span class="italic text-aged-gold font-normal">Shoot</span></h2>
-    </div>
-    <div class="grid md:grid-cols-3 gap-8">
+    <p class="reveal font-sans text-[11px] font-medium text-ink-faint uppercase tracking-[0.2em] mb-3">Services</p>
+    <h2 class="reveal reveal-delay-1 font-serif f-section mb-2">Day rates.</h2>
+    <div class="mt-10">
       ${data.services.map((s, i) => `
-        <div class="reveal reveal-delay-${Math.min(i + 1, 3)} glass-panel p-8 space-y-4">
-          <div class="w-8 h-8 rounded-full bg-aged-gold text-jet-black flex items-center justify-center font-sans font-bold text-xs">${i + 1}</div>
-          <h3 class="font-playfair text-xl text-bone-white italic">${escapeHtml(s.title)}</h3>
-          <p class="font-cormorant text-lg text-dry-stone leading-relaxed">${escapeHtml(s.description)}</p>
-          <p class="font-sans text-[11px] uppercase tracking-widest text-aged-gold font-bold">${escapeHtml(s.priceFrom)}</p>
+        <div class="reveal reveal-delay-${Math.min(i + 1, 3)} grid grid-cols-[2.4rem_1fr] sm:grid-cols-[3.2rem_1fr_auto] gap-x-6 gap-y-3 items-baseline py-7 border-t border-line ${i === data.services.length - 1 ? 'border-b' : ''}">
+          <div class="font-serif italic text-2xl text-ink-faint">${romanNumerals[i] || i + 1}</div>
+          <div>
+            <div class="font-serif text-xl md:text-2xl mb-1.5">${escapeHtml(s.title)}</div>
+            <p class="text-ink-soft text-[0.95rem] max-w-[52ch]">${escapeHtml(s.description)}</p>
+          </div>
+          <div class="col-span-2 sm:col-span-1 font-sans text-[0.95rem] whitespace-nowrap sm:text-right">
+            ${escapeHtml(s.priceFrom.replace(/^From\s*/i, ''))}
+            <small class="block text-[10px] uppercase tracking-widest text-ink-faint mt-0.5">From</small>
+          </div>
         </div>
       `).join('')}
     </div>
@@ -290,17 +293,15 @@ function renderServices(data) {
 function renderLegal(data) {
   const section = document.getElementById('panel-legal');
   section.innerHTML = `
-    <div class="text-[9px] font-sans text-aged-gold uppercase tracking-[0.3em] mb-4 reveal">Legal & Permits</div>
-    <div class="border-b border-white/5 pb-6 mb-12">
-      <h2 class="reveal reveal-delay-1 font-playfair text-3xl md:text-5xl uppercase tracking-widest text-bone-white">Shoot-Ready, <span class="italic text-aged-gold font-normal">Every Time</span></h2>
-    </div>
-    <div class="grid md:grid-cols-3 gap-6">
+    <p class="reveal font-sans text-[11px] font-medium text-ink-faint uppercase tracking-[0.2em] mb-3">Legal &amp; Permits</p>
+    <h2 class="reveal reveal-delay-1 font-serif f-section mb-12">Shoot-ready, every time.</h2>
+    <div class="max-w-[68ch]">
       ${data.legal.map((c, i) => `
-        <div class="reveal reveal-delay-${Math.min(i + 1, 3)} flex gap-4 p-5 bg-white/[0.01] border border-white/5 rounded-xl">
-          <i class="ph ${escapeHtml(c.icon)} text-2xl text-aged-gold shrink-0"></i>
+        <div class="reveal reveal-delay-${Math.min(i + 1, 3)} flex gap-5 py-6 border-t border-line ${i === data.legal.length - 1 ? 'border-b' : ''}">
+          <i class="ph ${escapeHtml(c.icon)} text-xl text-ink-faint shrink-0 mt-0.5"></i>
           <div>
-            <strong class="text-bone-white block mb-1 text-sm">${escapeHtml(c.title)}</strong>
-            <p class="text-xs text-dry-stone leading-relaxed">${escapeHtml(c.description)}</p>
+            <div class="font-serif text-lg mb-1">${escapeHtml(c.title)}</div>
+            <p class="text-ink-soft text-[0.95rem] leading-relaxed">${escapeHtml(c.description)}</p>
           </div>
         </div>
       `).join('')}
@@ -312,29 +313,29 @@ function renderContact(data) {
   const link = waLink(data.site.whatsappNumber, data.site.whatsappMessage);
   const section = document.getElementById('panel-contact');
   section.innerHTML = `
-    <div class="text-[9px] font-sans text-aged-gold uppercase tracking-[0.3em] mb-4 reveal">Contact</div>
-    <div class="border-b border-white/5 pb-6 mb-12">
-      <h2 class="reveal reveal-delay-1 font-playfair text-3xl md:text-5xl uppercase tracking-widest text-bone-white">Let's Shoot <span class="italic text-aged-gold font-normal">Something</span></h2>
-    </div>
-    <div class="grid md:grid-cols-12 gap-12">
-      <div class="md:col-span-5 space-y-6 reveal reveal-delay-1">
-        <p class="font-cormorant text-xl text-dry-stone leading-relaxed">${escapeHtml(data.site.tagline)} Based in ${escapeHtml(data.site.location)}.</p>
-        <a href="${link}" target="_blank" rel="noopener" class="inline-flex items-center gap-3 bg-[#25D366] text-white px-8 py-4 rounded-full font-bold text-[11px] uppercase tracking-widest hover:bg-[#20ba58] transition-all shadow-2xl">
-          ${escapeHtml(data.site.ctaLabel)} <i class="ph ph-whatsapp-logo"></i>
+    <div class="max-w-[1400px] mx-auto px-6 md:px-16 pt-32 md:pt-40 pb-24">
+      <p class="reveal font-sans text-[11px] font-medium text-paper/50 uppercase tracking-[0.2em] mb-3">Contact</p>
+      <h2 class="reveal reveal-delay-1 font-serif f-hero mb-10 max-w-[14ch]">Open a file.</h2>
+      <div class="reveal reveal-delay-2 flex flex-wrap items-center gap-x-8 gap-y-4 mb-16">
+        <a href="mailto:${escapeHtml(data.site.email)}" class="font-sans text-lg border-b border-paper pb-0.5">${escapeHtml(data.site.email)}</a>
+        <a href="${link}" target="_blank" rel="noopener" class="inline-flex items-center gap-2.5 font-sans text-sm text-paper/70 hover:text-paper transition-colors">
+          <span class="w-2.5 h-2.5 rounded-full bg-wa"></span> Message on WhatsApp
         </a>
-        <p class="font-sans text-[10px] text-dry-stone uppercase tracking-widest">${escapeHtml(data.site.email)}</p>
       </div>
-      <div class="md:col-span-7 space-y-3">
+
+      <div class="max-w-[68ch] border-t border-paper/15 pt-10">
         ${data.faq.map((f, i) => `
-          <details class="reveal reveal-delay-${Math.min(i + 1, 3)} bg-white/[0.02] border border-white/5 rounded-2xl p-5">
-            <summary class="flex justify-between items-center font-playfair italic text-lg text-bone-white">
+          <details class="reveal reveal-delay-${Math.min(i + 1, 3)} border-b border-paper/15 py-5">
+            <summary class="flex justify-between items-center gap-4 font-serif italic text-lg md:text-xl">
               ${escapeHtml(f.question)}
-              <i class="ph ph-plus faq-icon text-aged-gold"></i>
+              <i class="ph ph-plus faq-icon text-paper/60 shrink-0"></i>
             </summary>
-            <p class="text-sm text-dry-stone leading-relaxed">${escapeHtml(f.answer)}</p>
+            <p class="text-sm text-paper/65 leading-relaxed max-w-[56ch]">${escapeHtml(f.answer)}</p>
           </details>
         `).join('')}
       </div>
+
+      <p class="mt-16 font-sans text-[11px] text-paper/50 uppercase tracking-[0.2em]">${escapeHtml(data.site.location)}</p>
     </div>
   `;
 }
@@ -342,12 +343,11 @@ function renderContact(data) {
 function renderFooter(data) {
   const footer = document.getElementById('site-footer');
   footer.innerHTML = `
-    <div class="max-w-2xl mx-auto px-6 space-y-4">
-      <span class="font-playfair italic text-3xl block text-bone-white">${escapeHtml(data.site.brand)}<span class="text-aged-gold">.</span></span>
-      <div class="w-12 h-px bg-aged-gold mx-auto"></div>
-      <p class="font-sans text-[9px] text-dry-stone uppercase tracking-[0.4em]">${escapeHtml(data.footer.text)}</p>
-      <a href="${escapeHtml(data.site.instagramUrl)}" target="_blank" rel="noopener" class="inline-block text-dry-stone hover:text-aged-gold transition-colors">
-        <i class="ph ph-instagram-logo text-xl"></i>
+    <div class="max-w-[1400px] mx-auto flex flex-wrap justify-between items-center gap-3 font-sans text-[10px] text-ink-faint uppercase tracking-[0.15em]">
+      <span>${escapeHtml(data.site.brand)}</span>
+      <span>${escapeHtml(data.footer.text)}</span>
+      <a href="${escapeHtml(data.site.instagramUrl)}" target="_blank" rel="noopener" class="hover:text-ink transition-colors">
+        <i class="ph ph-instagram-logo text-base"></i>
       </a>
     </div>
   `;
@@ -382,16 +382,3 @@ fetch('/data.json')
   .catch((err) => {
     console.error('Could not load site content from data.json', err);
   });
-
-// Nav background on scroll + reading progress bar (scoped to the active,
-// scrollable panel rather than the whole document, since panels swap in
-// and out instead of one continuous page).
-const progressBar = document.getElementById('progress-bar');
-const nav = document.getElementById('main-nav');
-window.addEventListener('scroll', () => {
-  if (nav) nav.classList.toggle('scrolled', window.scrollY > 20);
-  if (progressBar) {
-    const max = document.body.scrollHeight - window.innerHeight;
-    progressBar.style.width = `${max > 0 ? (window.scrollY / max) * 100 : 0}%`;
-  }
-});

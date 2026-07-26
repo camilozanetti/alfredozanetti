@@ -61,8 +61,8 @@
   ],
   "portfolio": {
     "intro": {
-      "eyebrow": "Brutalist Form, Author's Space",
-      "title": "A clean, <span class=\"italic text-aged-gold font-normal\">cinematic</span> and natural aesthetic.",
+      "eyebrow": "Selected Work",
+      "title": "A clean, <em class=\"italic\">cinematic</em> and natural aesthetic.",
       "paragraph": "Alfredo Zanetti is a Perth-based photographer. His work is defined by a clean, cinematic aesthetic that captures the authenticity and emotion of every person in front of his camera.",
       "image": "https://images.squarespace-cdn.com/content/v1/692422ebd1cc1f7694f596a6/c16628dd-e8f3-48ad-a6b2-e45d76b3be3e/jareth1.JPG",
       "imageLabel": "Portfolio Work // Jareth I"

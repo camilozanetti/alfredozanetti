@@ -9,12 +9,13 @@
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- Google Fonts — editorial pairing from the rebranding proposal -->
+    <!-- Google Fonts — editorial fashion pairing: a high-contrast Didone for
+         masthead moments, a neutral grotesk for everything functional. -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400..900;1,400..900&family=Archivo:wght@400..700&display=swap" rel="stylesheet">
 
-    <!-- Phosphor Icons -->
+    <!-- Phosphor Icons (functional glyphs only — WhatsApp, menu, accordion) -->
     <script src="https://unpkg.com/@phosphor-icons/web" defer></script>
 
     <link rel="stylesheet" href="styles.css">
@@ -23,104 +24,110 @@
         tailwind.config = {
             theme: { extend: {
                 colors: {
-                    'jet-black':    '#0A0A0A',
-                    'bone-white':   '#F9F8F6',
-                    'warm-cotton':  '#F4EFE6',
-                    'aged-gold':    '#C6A15B',
-                    'dry-stone':    '#8C8882',
-                    'surface-card': '#121213',
+                    'paper':      '#F4F2ED',
+                    'paper-2':    '#EAE7DE',
+                    'ink':        '#100F0D',
+                    'ink-soft':   '#57544B',
+                    'ink-faint':  '#8C8879',
+                    'line':       '#D9D4C6',
+                    'wa':         '#25D366',
                 },
                 fontFamily: {
-                    playfair:  ['"Playfair Display"', 'serif'],
-                    cormorant: ['"Cormorant Garamond"', 'serif'],
-                    sans:      ['"Inter"', 'sans-serif'],
+                    serif: ['"Bodoni Moda"', 'ui-serif', 'serif'],
+                    sans:  ['"Archivo"', 'ui-sans-serif', 'sans-serif'],
                 },
             }}
         }
     </script>
 </head>
-<body class="font-sans bg-jet-black text-bone-white selection:bg-aged-gold selection:text-jet-black antialiased">
+<body class="font-sans bg-paper text-ink selection:bg-ink selection:text-paper antialiased">
 
     <div class="noise"></div>
-    <div id="progress-bar"></div>
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+      <filter id="grain">
+        <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch" result="noise"/>
+        <feColorMatrix in="noise" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.9 0"/>
+      </filter>
+    </svg>
 
-    <!-- Nav -->
-    <nav id="main-nav" class="fixed top-0 w-full z-50 border-b border-white/5 bg-jet-black/80 backdrop-blur-xl">
-        <div class="max-w-7xl mx-auto px-6 md:px-10 h-16 flex justify-between items-center">
-            <a href="#home" data-tab="home" class="font-playfair italic text-xl text-bone-white tracking-widest uppercase hover:text-aged-gold transition-colors">
-                Zanetti<span class="text-aged-gold">.</span>
+    <!-- Nav — mix-blend-difference means it needs no background of its own:
+         it inverts against whatever panel (photo or paper) sits beneath it. -->
+    <nav id="main-nav" class="fixed top-0 w-full z-50 mix-blend-difference text-white">
+        <div class="max-w-[1400px] mx-auto px-6 md:px-10 py-5 flex justify-between items-center">
+            <a href="#home" data-tab="home" class="font-serif italic text-xl tracking-wide">
+                Zanetti
             </a>
-            <div role="tablist" aria-label="Secciones" class="hidden md:flex gap-8 text-[9px] font-sans tracking-widest uppercase">
+            <div role="tablist" aria-label="Secciones" class="hidden md:flex items-center gap-8">
                 <!-- desktop tabs injected by main.js -->
             </div>
-            <div class="flex items-center gap-3">
-                <a id="nav-cta" href="#contact" data-tab="contact" class="hidden md:inline-flex bg-warm-cotton text-jet-black px-5 py-2 rounded-full font-sans text-[9px] font-semibold uppercase tracking-widest hover:bg-aged-gold transition">
+            <div class="flex items-center gap-5">
+                <a id="nav-cta" href="#contact" data-tab="contact" class="hidden md:inline-flex border border-current px-5 py-2 font-sans text-[10px] font-medium uppercase tracking-widest hover:bg-white hover:text-ink transition-colors">
                     Book Shoot
                 </a>
                 <button id="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Abrir menú"
-                        class="md:hidden w-9 h-9 flex items-center justify-center text-bone-white">
+                        class="md:hidden w-9 h-9 flex items-center justify-center">
                     <i class="ph ph-list text-2xl"></i>
                 </button>
             </div>
         </div>
     </nav>
 
-    <!-- Mobile full-screen menu -->
+    <!-- Mobile full-screen menu (opaque takeover — deliberately not blended) -->
     <div id="mobile-menu" aria-hidden="true"
-         class="md:hidden fixed inset-0 z-40 bg-jet-black/98 backdrop-blur-xl flex flex-col items-center justify-center gap-10 opacity-0 pointer-events-none transition-opacity duration-300">
-        <div role="tablist" aria-label="Secciones (móvil)" id="mobile-tabs" class="flex flex-col items-center gap-7 text-2xl font-playfair italic"></div>
-        <a id="mobile-cta" href="#contact" data-tab="contact" class="bg-warm-cotton text-jet-black px-8 py-3 rounded-full font-sans text-[10px] font-semibold uppercase tracking-widest">
+         class="md:hidden fixed inset-0 z-40 bg-ink text-paper flex flex-col items-center justify-center gap-9 opacity-0 pointer-events-none transition-opacity duration-300">
+        <div role="tablist" aria-label="Secciones (móvil)" id="mobile-tabs" class="flex flex-col items-center gap-7 text-2xl font-serif italic"></div>
+        <a id="mobile-cta" href="#contact" data-tab="contact" class="border border-paper/40 px-8 py-3 font-sans text-[10px] font-medium uppercase tracking-widest">
             Book Shoot
         </a>
     </div>
 
-    <!-- WhatsApp flotante (oculto en Home: el hero ya tiene su propio CTA) -->
+    <!-- WhatsApp float (utility brand recognition — hidden on Home, which has its own CTA) -->
     <a id="whatsapp-float" href="#" target="_blank" rel="noopener"
-       class="fixed bottom-7 right-5 z-50 flex items-center justify-center w-12 h-12 bg-[#25D366] rounded-full shadow-[0_6px_20px_rgba(37,211,102,0.45)] hover:scale-110 opacity-0 scale-75 pointer-events-none transition-all duration-300">
+       class="fixed bottom-7 right-5 z-50 flex items-center justify-center w-12 h-12 bg-wa rounded-full shadow-[0_6px_20px_rgba(37,211,102,0.4)] hover:scale-110 opacity-0 scale-75 pointer-events-none transition-all duration-300">
         <i class="ph-fill ph-whatsapp-logo text-white text-2xl"></i>
     </a>
 
-    <main class="pt-16">
+    <main>
 
-        <!-- HOME / HERO panel -->
+        <!-- HOME / HERO panel — full-bleed, image runs edge to edge including behind the nav -->
         <section id="panel-home" role="tabpanel" aria-labelledby="tab-home" data-panel="home"
-                  class="relative min-h-screen flex flex-col justify-end px-6 md:px-16 pb-20 md:pb-28">
+                  class="relative min-h-screen">
             <!-- populated by main.js -->
         </section>
 
         <!-- PORTFOLIO panel -->
         <section id="panel-portfolio" role="tabpanel" aria-labelledby="tab-portfolio" data-panel="portfolio" hidden tabindex="-1"
-                  class="max-w-7xl mx-auto px-6 md:px-16 py-24 space-y-16">
+                  class="max-w-[1400px] mx-auto px-6 md:px-14 pt-32 md:pt-40 pb-24">
             <!-- populated by main.js -->
         </section>
 
         <!-- ABOUT panel -->
         <section id="panel-about" role="tabpanel" aria-labelledby="tab-about" data-panel="about" hidden tabindex="-1"
-                  class="max-w-7xl mx-auto px-6 md:px-16 py-24">
+                  class="max-w-[1400px] mx-auto px-6 md:px-14 pt-32 md:pt-40 pb-24">
             <!-- populated by main.js -->
         </section>
 
         <!-- SERVICES panel -->
         <section id="panel-services" role="tabpanel" aria-labelledby="tab-services" data-panel="services" hidden tabindex="-1"
-                  class="max-w-7xl mx-auto px-6 md:px-16 py-24">
+                  class="max-w-[1000px] mx-auto px-6 md:px-14 pt-32 md:pt-40 pb-24">
             <!-- populated by main.js -->
         </section>
 
         <!-- LEGAL & PERMITS panel -->
         <section id="panel-legal" role="tabpanel" aria-labelledby="tab-legal" data-panel="legal" hidden tabindex="-1"
-                  class="max-w-7xl mx-auto px-6 md:px-16 py-24">
+                  class="max-w-[1000px] mx-auto px-6 md:px-14 pt-32 md:pt-40 pb-24">
             <!-- populated by main.js -->
         </section>
 
-        <!-- CONTACT panel -->
+        <!-- CONTACT panel — the one deliberately inverted "closing" moment -->
         <section id="panel-contact" role="tabpanel" aria-labelledby="tab-contact" data-panel="contact" hidden tabindex="-1"
-                  class="max-w-7xl mx-auto px-6 md:px-16 py-24">
+                  class="bg-ink text-paper min-h-screen">
             <!-- populated by main.js -->
         </section>
 
     </main>
 
-    <footer id="site-footer" class="border-t border-white/5 py-16 text-center px-4">
+    <footer id="site-footer" class="border-t border-line py-10 px-4">
         <!-- populated by main.js -->
     </footer>
 
