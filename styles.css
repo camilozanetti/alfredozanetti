@@ -10,10 +10,15 @@ img, video { display: block; max-width: 100%; }
 
 ::selection { background: #100F0D; color: #F4F2ED; }
 
+/* A live SVG filter (feTurbulence via `filter: url()`) stretched across the
+   whole viewport gets rendered in internal tiles by some browsers, and the
+   noise pattern doesn't stitch across that boundary — visible as a seam at
+   certain window widths. Baking the turbulence into a small raster image and
+   tiling it with plain `background-repeat` sidesteps that entirely. */
 .noise {
   position: fixed; inset: 0; z-index: 40; pointer-events: none; opacity: 0.05;
-  filter: url(#grain);
-  background: #000;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
   mix-blend-mode: overlay;
 }
 
